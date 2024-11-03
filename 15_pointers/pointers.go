@@ -14,7 +14,7 @@ func chageNumber(number *int){
 
 
 func main() {
- number:= 10
+ number := 10
  chageNumber(&number)
  fmt.Println(number)
 }
