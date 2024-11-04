@@ -11,7 +11,12 @@ type post struct{
 }
 
 func (p *post) inc(wg *sync.WaitGroup){
-	defer wg.Done()
+	//defering function is always called while function exit
+	defer func ()  {
+		p.mu.Unlock()
+		wg.Done()
+	}()
+	p.mu.Lock()
 	p.views+=1
 }
 
